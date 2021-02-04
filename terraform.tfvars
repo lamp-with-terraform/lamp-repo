@@ -1,9 +1,10 @@
 key_name = "lamp_key"
 public_key_path = "/home/ec2-user/.ssh/id_rsa.pub"
 region = "us-east-1"
-vpc_cidr = "10.0.0.0/16"
-subnet_one_cidr = "10.0.1.0/24"
-subnet_two_cidr = ["10.0.2.0/24","10.0.3.0/24"]
+vpc_cidr = "10.99.0.0/16"
+public_subnet_cidr = ["10.99.1.0/24","10.99.2.0/24"]
+app_private_subnet_cidr = ["10.99.11.0/24","10.99.12.0/24"]
+db_private_subnet_cidr = ["10.99.21.0/24","10.99.22.0/24"]
 route_table_cidr = "0.0.0.0/0"
 web_ports = ["22","80", "443", "3306"]
 db_ports = ["22", "3306"]
