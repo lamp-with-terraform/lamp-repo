@@ -8,7 +8,7 @@ data "terraform_remote_state" "network" {
   backend = "s3"
 
   config = {
-    bucket = "lamp-tf-state-bucket-123456"
+    bucket = "my-tf-state-bucket-0123456789"
     key    = "/home/ec2-user/environment/new_env/terraform.tfstate"
     region = "us-east-1"
   }
