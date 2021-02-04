@@ -1,3 +1,3 @@
-variable "my_database_subnet_group" {}
+variable "my_db_subnet_group_name" {}
 
-variable "db_security_group" {}
+variable "my_db_security_group" {}
