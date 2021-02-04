@@ -1,3 +1,4 @@
-output "db_server_address" {
-  value = "${module.rds.db_server_address}"
+#getting lb dns
+output "public_dns" {
+  value = "${module.elb.lb_dns}"
 }
