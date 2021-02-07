@@ -11,8 +11,16 @@ data "aws_ami" "server_ami" {
     values = ["amzn-ami-hvm*-x86_64-gp2"]
   }
 }
+#template file for userdata
+data "template_file" "userdata" {
+  template = "${file("${path.module}/userdata.tpl")}"
 
-#Creating key pair
+  vars {
+    "my_db_server_address" = "${var.my_db_server_address}"
+    }
+}
+
+#Creating key 
 resource "aws_key_pair" "lamp_auth" {
   key_name   = "${var.key_name}"
   public_key = "${file(var.public_key_path)}"
@@ -24,28 +32,7 @@ resource "aws_launch_configuration" "lamp_conf" {
   image_id      = "${data.aws_ami.server_ami.id}"
   instance_type = "t2.micro"
 
-  user_data = <<EOF
-#!/bin/bash
-sudo mkdir -p /var/www/html/
-sudo yum update -y
-sudo yum install -y httpd
-sudo service httpd start
-sudo chkconfig httpd on
-sudo usermod -a -G apache ec2-user
-sudo chown -R ec2-user:apache /var/www
-sudo yum install -y mysql php php-mysql
-sudo yum install git -y
-git clone https://github.com/lamp-with-terraform/index.git
-mv index/index.php /var/www/html/index.php
-cd /var/www/html
-sed -i 's/enter_the_name/${var.my_db_server_address}/' index.php
-mysql -h "${var.my_db_server_address}" -P 3306 -u lampuser -plamppassword
-USE mydb;
-CREATE TABLE counter (visits int(10) NOT NULL);
-INSERT INTO counter(visits) values(1);
-exit
-EOF
-
+  user_data = "${data.template_file.userdata.rendered}" 
   security_groups = ["${var.my_web_security_group}"]
   key_name        = "${aws_key_pair.lamp_auth.id}"
 
