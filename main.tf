@@ -1,6 +1,6 @@
 # Setting up region
 provider "aws" {
-  region = "us-east-1"
+  region = "${lookup(var.region, var.env)}"
 }
 
 #remote tfstate
@@ -15,6 +15,7 @@ data "terraform_remote_state" "network" {
 }
 
 # Deploy Networking Resources
+
 module "networking" {
   source                  = "./networking"
   route_table_cidr        = "${var.route_table_cidr}"
@@ -52,5 +53,4 @@ module "elb" {
   my_public_subnet1     = "${module.networking.public_subnet1}"
   my_public_subnet2     = "${module.networking.public_subnet2}"
   my_tg_arn             = "${module.asg.tg_arn}"
-  my_lb_arn             = "${module.elb.lb_arn}"
 }
