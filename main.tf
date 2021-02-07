@@ -9,7 +9,7 @@ data "terraform_remote_state" "network" {
 
   config = {
     bucket = "my-tf-state-bucket-0123456789"
-    key    = "/home/ec2-user/environment/new_env/terraform.tfstate"
+    key    = "/home/ec2-user/environment/lamp-repo/terraform.tfstate"
     region = "us-east-1"
   }
 }
