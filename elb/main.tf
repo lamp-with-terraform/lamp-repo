@@ -11,7 +11,7 @@ resource "aws_lb" "lamp_lb" {
 
 # Configuring listener and target group
 resource "aws_lb_listener" "http" {
-  load_balancer_arn = "${var.my_lb_arn}"
+  load_balancer_arn = "${aws_lb.lamp_lb.arn}"
   port              = "80"
   protocol          = "HTTP"
 
