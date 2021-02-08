@@ -9,7 +9,6 @@ ssh-keygen (all default)
 #install git
 yum -y install git
 #clone repo
-make sude you are in /home/ec2-user/environment/
 git clone https://github.com/lamp-with-terraform/lamp-repo.git
 cd lamp-repo
 # Downloading the Plugin for the AWS provider
