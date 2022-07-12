@@ -1,7 +1,7 @@
 key_name = "lamp_key"
 public_key_path = "/home/ec2-user/.ssh/id_rsa.pub"
 region = {
-    dev = "us-east-1"
+    dev = "eu-west-2"
     prod = "us-east-2"
 }
 vpc_cidr = "10.99.0.0/16"
