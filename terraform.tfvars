@@ -1,5 +1,5 @@
 key_name = "lamp_key"
-public_key_path = "/home/ec2-user/.ssh/id_rsa.pub"
+public_key_path = "/home/armeng/.ssh/id_rsa.pub"
 region = {
     dev = "eu-west-2"
     prod = "us-east-2"
