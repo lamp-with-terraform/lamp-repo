@@ -10,7 +10,7 @@ data "terraform_remote_state" "network" {
   config = {
     bucket = "my-tf-state-bucket-0123456789"
     key    = "~/lamp-repo/terraform.tfstate"
-    region = "us-east-1"
+    region = "eu-west-2"
   }
 }
 
