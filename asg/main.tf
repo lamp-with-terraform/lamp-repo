@@ -16,7 +16,7 @@ data "template_file" "userdata" {
   template = "${file("${path.module}/userdata.tpl")}"
 
   vars = {
-    my_db_server_address = ${var.my_db_server_address}
+    my_db_server_address = "${var.my_db_server_address}"
     }
 }
 
