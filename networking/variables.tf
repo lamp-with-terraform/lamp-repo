@@ -3,7 +3,7 @@
 variable "vpc_cidr" {}
 
 variable "public_subnet_cidr" {
-  type = "list"
+  type = list
 }
 
 variable "app_private_subnet_cidr" {
