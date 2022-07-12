@@ -1,3 +1,5 @@
+#The intention of this task is to get lamp stack on AWS side.
+# As IAC was used Terraform (1.2.4) vesrion
 ----------------USAGE------------------------
 #conenct to aws
 Insert your AWS access key & secret key as Environment Variables, In this way we're NOT setting them permanently, you'll need to run these commands again whenever you reopen your terminal
