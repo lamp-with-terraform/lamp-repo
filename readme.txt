@@ -1,4 +1,5 @@
 #The intention of this task is to get lamp stack on AWS side.
+# The application is calculating visits and showing the result.
 # As IAC was used Terraform (1.2.4) vesrion
 ----------------USAGE------------------------
 #conenct to aws
