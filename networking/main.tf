@@ -8,7 +8,7 @@ resource "aws_vpc" "lamp_vpc" {
   cidr_block = "${var.vpc_cidr}"
 
   #enable_dns_hostnames = true
-  tags {
+  tags = {
     Name = "lamp-vpc"
   }
 }
@@ -20,7 +20,7 @@ resource "aws_subnet" "lamp_vpc_public_subnet1" {
   availability_zone       = "${data.aws_availability_zones.availability_zones.names[0]}"
   map_public_ip_on_launch = true
 
-  tags {
+  tags = {
     Name = "lamp-vpc-public-subnet1"
   }
 }
@@ -32,7 +32,7 @@ resource "aws_subnet" "lamp_vpc_public_subnet2" {
   availability_zone       = "${data.aws_availability_zones.availability_zones.names[1]}"
   map_public_ip_on_launch = true
 
-  tags {
+  tags = {
     Name = "lamp-vpc-public-subnet2"
   }
 }
@@ -43,7 +43,7 @@ resource "aws_subnet" "lamp_vpc_app_private_subnet1" {
   cidr_block        = "${element(var.app_private_subnet_cidr, 0)}"
   availability_zone = "${data.aws_availability_zones.availability_zones.names[0]}"
 
-  tags {
+  tags = {
     Name = "app-private_subnet1"
   }
 }
@@ -54,7 +54,7 @@ resource "aws_subnet" "lamp_vpc_app_private_subnet2" {
   cidr_block        = "${element(var.app_private_subnet_cidr, 1)}"
   availability_zone = "${data.aws_availability_zones.availability_zones.names[1]}"
 
-  tags {
+  tags = {
     Name = "app-private_subnet2"
   }
 }
@@ -65,7 +65,7 @@ resource "aws_subnet" "lamp_vpc_db_private_subnet1" {
   cidr_block        = "${element(var.db_private_subnet_cidr, 0)}"
   availability_zone = "${data.aws_availability_zones.availability_zones.names[0]}"
 
-  tags {
+  tags = {
     Name = "db-private-subnet1"
   }
 }
@@ -76,7 +76,7 @@ resource "aws_subnet" "lamp_vpc_db_private_subnet2" {
   cidr_block        = "${element(var.db_private_subnet_cidr, 1)}"
   availability_zone = "${data.aws_availability_zones.availability_zones.names[1]}"
 
-  tags {
+  tags = {
     Name = "db-private-subnet2"
   }
 }
@@ -85,7 +85,7 @@ resource "aws_subnet" "lamp_vpc_db_private_subnet2" {
 resource "aws_internet_gateway" "lamp_internet_gateway" {
   vpc_id = "${aws_vpc.lamp_vpc.id}"
 
-  tags {
+  tags = {
     Name = "lamp-internet-gateway"
   }
 }
@@ -99,7 +99,7 @@ resource "aws_route_table" "lamp_public_subnet_route_table" {
     gateway_id = "${aws_internet_gateway.lamp_internet_gateway.id}"
   }
 
-  tags {
+  tags = {
     Name = "lamp-public-subnet-route-table"
   }
 }
@@ -113,7 +113,7 @@ resource "aws_route_table" "lamp_private_subnet_route_table" {
     nat_gateway_id = "${aws_nat_gateway.lamp_ngw.id}"
   }
 
-  tags {
+  tags = {
     Name = "lamp-private-subnet-route-table"
   }
 }
@@ -213,7 +213,7 @@ resource "aws_security_group" "db_security_group" {
   description = "Allow all inbound traffic"
   vpc_id      = "${aws_vpc.lamp_vpc.id}"
 
-  tags {
+  tags = {
     Name = "lamp-vp-db-security-group"
   }
 }
