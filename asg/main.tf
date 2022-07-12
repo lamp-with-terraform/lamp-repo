@@ -15,9 +15,9 @@ data "aws_ami" "server_ami" {
 data "template_file" "userdata" {
   template = "${file("${path.module}/userdata.tpl")}"
 
-  #vars {
-   # my_db_server_address = ${var.my_db_server_address}
-    #}
+  vars = {
+    my_db_server_address = ${var.my_db_server_address}
+    }
 }
 
 #Creating key 
