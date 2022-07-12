@@ -180,7 +180,7 @@ resource "aws_security_group" "web_security_group" {
   description = "Allow all inbound traffic"
   vpc_id      = "${aws_vpc.lamp_vpc.id}"
 
-  tags {
+  tags = {
     Name = "lamp-vpc-web-security-group"
   }
 }
