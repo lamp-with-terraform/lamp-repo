@@ -7,19 +7,19 @@ variable "public_subnet_cidr" {
 }
 
 variable "app_private_subnet_cidr" {
-  type = "list"
+  type = list
 }
 
 variable "db_private_subnet_cidr" {
-  type = "list"
+  type = list
 }
 
 variable "route_table_cidr" {}
 
 variable "db_ports" {
-  type = "list"
+  type = list
 }
 
 variable "web_ports" {
-  type = "list"
+  type = list
 }
