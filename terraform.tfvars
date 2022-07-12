@@ -2,7 +2,7 @@ key_name = "lamp_key"
 public_key_path = "/home/armeng/.ssh/id_rsa.pub"
 region = {
     dev = "eu-west-2"
-    prod = "us-east-2"
+    prod = "eu-central-1"
 }
 vpc_cidr = "10.99.0.0/16"
 public_subnet_cidr = ["10.99.1.0/24","10.99.2.0/24"]
