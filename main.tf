@@ -4,15 +4,15 @@ provider "aws" {
 }
 
 #remote tfstate
-data "terraform_remote_state" "network" {
-  backend = "s3"
-
-  config = {
-    bucket = "my-tf-state-bucket-0123456789"
-    key    = "~/lamp-repo/terraform.tfstate"
-    region = "eu-west-2"
-  }
-}
+# data "terraform_remote_state" "network" {
+#  backend = "s3"
+#
+# config = {
+# bucket = "my-tf-state-bucket-0123456789"
+# key    = "~/lamp-repo/terraform.tfstate"
+# region = "eu-west-2"
+#  }
+#}
 
 # Deploy Networking Resources
 
