@@ -11,6 +11,7 @@ data "aws_ami" "server_ami" {
     values = ["amzn-ami-hvm*-x86_64-gp2"]
   }
 }
+
 #template file for userdata
 data "template_file" "userdata" {
   template = "${file("${path.module}/userdata.tpl")}"
@@ -31,13 +32,11 @@ resource "aws_launch_configuration" "lamp_conf" {
   name          = "lampconf"
   image_id      = "${data.aws_ami.server_ami.id}"
   instance_type = "t2.micro"
-
   user_data = "${data.template_file.userdata.rendered}" 
   security_groups = ["${var.my_web_security_group}"]
   key_name        = "${aws_key_pair.lamp_auth.id}"
-
-  // If the launch_configuration is modified:
-  // --> Create New resources before destroying the old resources
+  #If the launch_configuration is modified
+  #Create New resources before destroying the old resources
   lifecycle {
     create_before_destroy = true
   }
@@ -63,7 +62,6 @@ resource "aws_autoscaling_group" "lamp_asg" {
   launch_configuration      = "${aws_launch_configuration.lamp_conf.name}"
   vpc_zone_identifier       = ["${var.my_private_subnet1}", "${var.my_private_subnet2}"]
   target_group_arns         = ["${aws_lb_target_group.lamp_tg.arn}"]
-
   # availability_zones = ["us-east-1a"]
   # placement_group           = aws_placement_group.test.id
   tag {
@@ -71,7 +69,6 @@ resource "aws_autoscaling_group" "lamp_asg" {
     value               = "Lamp-ASG"
     propagate_at_launch = false
   }
-
   lifecycle {
     create_before_destroy = true
   }
