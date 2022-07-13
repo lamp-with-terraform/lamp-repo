@@ -1,7 +1,7 @@
 #The intention of this task is to get lamp stack on AWS side.
 # The application is calculating visits and showing the result.
 # As IAC was used Terraform (1.2.4) vesrion
-----------------USAGE------------------------
+----------------USAGE on Ubuntu------------------------
 #conenct to aws
 Insert your AWS access key & secret key as Environment Variables, In this way we're NOT setting them permanently, you'll need to run these commands again whenever you reopen your terminal
 export AWS_ACCESS_KEY_ID=<your access key>
@@ -14,6 +14,19 @@ yum -y install git
 #clone repo
 git clone https://github.com/lamp-with-terraform/lamp-repo.git
 cd lamp-repo
+#Install Terraform
+-Install unzip
+sudo apt-get install unzip
+-Confirm the latest version number on the terraform website:
+https://www.terraform.io/downloads.html
+-Download latest version of the terraform (substituting newer version number if needed)
+wget https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+-Extract the downloaded file archive
+unzip terraform_1.0.7_linux_amd64.zip
+-Move the executable into a directory searched for executables
+sudo mv terraform /usr/local/bin/
+-Run it
+terraform --version 
 # Downloading the Plugin for the AWS provider
 terraform init
 #create workspaces
