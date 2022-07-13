@@ -1,6 +1,6 @@
 #The intention of this task is to get lamp stack on AWS side.
 # The application is calculating visits and showing the result.
-# As IAC was used Terraform (1.2.4) vesrion
+# As IAC was used Terraform (1.2.4) version
 ----------------USAGE on Ubuntu------------------------
 #conenct to aws
 Insert your AWS access key & secret key as Environment Variables, In this way we're NOT setting them permanently, you'll need to run these commands again whenever you reopen your terminal
@@ -17,12 +17,10 @@ cd lamp-repo
 #Install Terraform
 -Install unzip
 sudo apt-get install unzip
--Confirm the latest version number on the terraform website:
-https://www.terraform.io/downloads.html
--Download latest version of the terraform (substituting newer version number if needed)
-wget https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip
+-Download (1.2.4) version of the terraform
+wget https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip
 -Extract the downloaded file archive
-unzip terraform_1.0.7_linux_amd64.zip
+unzip terraform_1.2.4_linux_amd64.zip
 -Move the executable into a directory searched for executables
 sudo mv terraform /usr/local/bin/
 -Run it
@@ -33,11 +31,11 @@ terraform init
 terraform workspace new prod
 terraform workspace new dev
 #build the Lamp project for dev 
-terraform apply (select dev environment, and will build environment in us-east-1 region)
+terraform apply (select dev environment, and will build environment in eu-west-2 region)
 #destroy the Lamp project
 terraform destroy
 #build the Lamp project for prod
 terraform workspace select prod
-terraform apply (select prod environment, and will build environment in us-east-2 region)
+terraform apply (select prod environment, and will build environment in eu-central-1 region)
 #destroy the Lamp project
 terraform destroy
