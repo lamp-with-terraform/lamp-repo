@@ -39,3 +39,4 @@ terraform workspace select prod
 terraform apply (select prod environment, and will build environment in eu-central-1 region)
 #destroy the Lamp project
 terraform destroy
+test phrase
