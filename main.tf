@@ -14,8 +14,12 @@ provider "aws" {
 #  }
 #}
 #
+<<<<<<< HEAD
 # Deploy Networking Resources
-# wrong comment
+# addding test string
+# wrong string corrected
+
+>>>>>>> 7bb8cdbd034cd82d23f34abe1e648373e396b5f2
 module "networking" {
   source                  = "./networking"
   route_table_cidr        = "${var.route_table_cidr}"
